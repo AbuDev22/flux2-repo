@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: todo-release
+  namespace: staging
+
+spec:
+  releaseName: todo-api-stag
+  chart:
+    spec:
+      chart: charts/todo-api
+      sourceRef:
+        kind: GitRepository
+        name: todo-helm
+        namespace: staging
+  
+  # values:
+  #   ingress:
+  #     hosts:
+  #       - host: todo.staging
+  #         paths:
+  #           - path: /
+  #             pathType: ImplementationSpecific

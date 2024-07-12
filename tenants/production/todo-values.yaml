@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: todo-release
+  namespace: prod
+
+spec:
+  releaseName: todo-api
+  chart:
+    spec:
+      chart: charts/todo-api
+      sourceRef:
+        kind: GitRepository
+        name: todo-helm
+        namespace: prod
+
+  values:
+    api:
+      replicaCount: 2
+    ingress:
+      host: production.api
+        
+          
+
+              

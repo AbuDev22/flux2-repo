@@ -1,0 +1,26 @@
+api:
+  image:
+    repository: abudev22/newtodo-api
+    tag: latest
+  replicaCount: 3
+
+ingress:
+  host: staging.api.com
+
+db:
+  image:
+    repository: postgres
+    tag: latest
+  replicaCount: 1
+  storage:
+    size: 1Gi
+
+config:
+  dbEngine: "django.db.backends.postgresql"
+  dbName: postgres
+  dbUser: postgres
+  dbHost: db-service
+  dbPort: "5432"
+
+secrets:
+  dbPassword: postgres
